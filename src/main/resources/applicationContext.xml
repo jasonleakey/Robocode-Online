@@ -12,7 +12,7 @@
                            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="com.example" />
+    <context:component-scan base-package="edu.utd" />
     
     <mvc:annotation-driven/>
     <mvc:resources mapping="/public/**" location="classpath:/public/"/>
@@ -23,15 +23,15 @@
         <property name="suffix" value=".jsp" />
         <property name="redirectHttp10Compatible" value="false" />
     </bean>
-
+    
     <fss:oauth>
         <fss:oauthInfo endpoint="http://login.salesforce.com"
-                       oauth-key="#{systemEnvironment['OAUTH_CLIENT_KEY']}"
-                       oauth-secret="#{systemEnvironment['OAUTH_CLIENT_SECRET']}"/>
+                       oauth-key="3MVG9A2kN3Bn17huEHwOZqYKzEC9gX3Vx7ITfvgKIPDnsOId_sfsUR92Mzr0EjweS_sWPesBV518T54iYtl8q"
+                       oauth-secret="808627943767271720"/>
     </fss:oauth>
     
     <security:http use-expressions="true">
-        <security:intercept-url pattern="/people/*" access="isAuthenticated()" />
+        <security:intercept-url pattern="/robot/*" access="isAuthenticated()" />
     </security:http>
 
 </beans>
