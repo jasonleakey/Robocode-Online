@@ -58,7 +58,7 @@ public class RobocodeRunner
         BattlefieldSpecification battlefield = new BattlefieldSpecification(
                 800, 600); // 800x600
         
-        System.out.println(RobocodeEngine.getRobotsDir());
+        Logger.logMessage(RobocodeEngine.getRobotsDir().toString());
         
         RobotSpecification[] selectedRobots = engine.getLocalRepository(StringUtils.join(robots, ','));
 //        RobotSpecification[] selectedRobots = engine.getLocalRepository();
@@ -84,42 +84,42 @@ public class RobocodeRunner
 
         public void onBattleStarted(BattleStartedEvent e)
         {
-            System.out.println("-- Battle was started --");
+            Logger.logMessage("-- Battle was started --");
         }
 
         public void onBattleFinished(BattleFinishedEvent e)
         {
             if (e.isAborted())
             {
-                System.out.println("-- Battle was aborted --");
+                Logger.logMessage("-- Battle was aborted --");
             }
             else
             {
-                System.out.println("-- Battle was finished succesfully --");
+                Logger.logMessage("-- Battle was finished succesfully --");
             }
         }
 
         public void onBattleCompleted(BattleCompletedEvent e)
         {
-            System.out.println("-- Battle has completed --");
+            Logger.logMessage("-- Battle has completed --");
 
             // Print out the sorted results with the robot names
-            System.out.println("\n-- Battle results --");
+            Logger.logMessage("\n-- Battle results --");
             for (BattleResults result : e.getSortedResults())
             {
-                System.out.println("  " + result.getTeamLeaderName() + ": "
+                Logger.logMessage("  " + result.getTeamLeaderName() + ": "
                         + result.getScore());
             }
         }
 
         public void onBattleMessage(BattleMessageEvent e)
         {
-            System.out.println("Msg> " + e.getMessage());
+            Logger.logMessage("Msg> " + e.getMessage());
         }
 
         public void onBattleError(BattleErrorEvent e)
         {
-            System.out.println("Err> " + e.getError());
+            Logger.logMessage("Err> " + e.getError());
         }
     }
 
