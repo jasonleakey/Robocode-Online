@@ -5,7 +5,7 @@ import edu.utd.model.Session;
 
 public interface SessionService {
 
-	public void addSession(Session session);
+	public String addSession(Session session);
     public List<Session> listSession();
     public void removeSession(String id);
     

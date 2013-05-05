@@ -71,7 +71,7 @@ li {
 	</p>
 	<div class="container">
 		<fieldset>
-			<legend>Your Robot</legend>
+			<legend>Your Robot List</legend>
 			<div id="robotlist" style="overflow: scroll; border: 1px solid;">
 				<ol>
 					<c:forEach items="${robotList}" var="robot">
@@ -79,31 +79,13 @@ li {
 					</c:forEach>
 				</ol>
 			</div>
-			<div>
-				<form:form method="post" action="save" commandName="robot"
-					class="form-vertical">
-
-					<form:label path="source_Code">Your robot code</form:label>
-					<p>
-					<form:textarea path="source_Code" wrap="virtual" cols="50"
-						rows="10" />
-					<p>
-					<div style="float: right">
-						<input type="submit" value="Save" class="btn" />
-					</div>
-				</form:form>
-			</div>
-
+			
 			<div id="robotbuttons">
 				<div style="float: left">
-					<form action="add" method="post">
-						<input type="submit" class="btn btn-danger btn-mini" value="New" />
-					</form>
-				</div>
-				<div style="float: right">
-					<form action="delete/${robot.name}" method="post">
+					<form action="join" method="get">
+						<input type="text" name="robot_name">
 						<input type="submit" class="btn btn-danger btn-mini"
-							value="Delete" />
+							value="Join" />
 					</form>
 				</div>
 			</div>

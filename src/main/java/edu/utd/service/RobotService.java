@@ -9,5 +9,6 @@ public interface RobotService {
     
     public void addRobot(Robot robot);
     public List<Robot> listRobot();
+    public Robot getRobot(String name);
     public void removeRobot(String id);
 }

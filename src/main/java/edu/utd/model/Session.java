@@ -3,121 +3,136 @@ package edu.utd.model;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Session
+{
+    @JsonProperty(value = "robocode__RoomName__c")
+    private String RoomName;
 
-public class Session {
+    @JsonProperty(value = "robocode__Status__c")
+    private String Status;
 
-	@JsonProperty(value="Session_ID")
-	private String Session_ID;
-	
-	@JsonProperty(value="robocode__RoomName__c")
-	private String RoomName;
-	
-	@JsonProperty(value="robocode__Status__c")
-	private String Status;
-	
-	@JsonProperty(value="robocode__Player_Number__c")
-	private String Player_Number;
-	
-	@JsonProperty(value="robocode__Capacity__c")
-	private String Capacity;
-	
-	@JsonProperty(value="robocode__Players_1__c")
-	private String Players_1;
-	
-	@JsonProperty(value="robocode__Players_2__c")
-	private String Players_2;
-	
-	@JsonProperty(value="robocode__Players_3__c")
-	private String Players_3;
-	
-	@JsonProperty(value="robocode__Players_4__c")
-	private String Players_4;
-	
-	@JsonProperty(value="robocode__Players_5__c")
-	private String Players_5;
-	
-	@JsonProperty(value="robocode__Players_6__c")
-	private String Players_6;
+    @JsonProperty(value = "robocode__Player_Number__c")
+    private int Player_Number;
 
-	public String getRoomName() {
-		return RoomName;
-	}
+    @JsonProperty(value = "robocode__Capacity__c")
+    private int Capacity;
 
-	public void setRoomName(String roomName) {
-		RoomName = roomName;
-	}
+    @JsonProperty(value = "robocode__Player_1__c")
+    private String Players_1;
 
-	public String getStatus() {
-		return Status;
-	}
+    @JsonProperty(value = "robocode__Player_2__c")
+    private String Players_2;
 
-	public void setStatus(String status) {
-		Status = status;
-	}
+    @JsonProperty(value = "robocode__Player_3__c")
+    private String Players_3;
 
-	public String getPlayer_Number() {
-		return Player_Number;
-	}
+    @JsonProperty(value = "robocode__Player_4__c")
+    private String Players_4;
 
-	public void setPlayer_Number(String player_Number) {
-		Player_Number = player_Number;
-	}
+    @JsonProperty(value = "robocode__Player_5__c")
+    private String Players_5;
 
-	public String getCapacity() {
-		return Capacity;
-	}
+    @JsonProperty(value = "robocode__Player_6__c")
+    private String Players_6;
 
-	public void setCapacity(String capacity) {
-		Capacity = capacity;
-	}
+    public String getRoomName()
+    {
+        return RoomName;
+    }
 
-	public String getPlayers_1() {
-		return Players_1;
-	}
+    public void setRoomName(String roomName)
+    {
+        RoomName = roomName;
+    }
 
-	public void setPlayers_1(String players_1) {
-		Players_1 = players_1;
-	}
+    public String getStatus()
+    {
+        return Status;
+    }
 
-	public String getPlayers_2() {
-		return Players_2;
-	}
+    public void setStatus(String status)
+    {
+        Status = status;
+    }
 
-	public void setPlayers_2(String players_2) {
-		Players_2 = players_2;
-	}
+    public int getPlayer_Number()
+    {
+        return Player_Number;
+    }
 
-	public String getPlayers_3() {
-		return Players_3;
-	}
+    public void setPlayer_Number(int player_Number)
+    {
+        Player_Number = player_Number;
+    }
 
-	public void setPlayers_3(String players_3) {
-		Players_3 = players_3;
-	}
+    public int getCapacity()
+    {
+        return Capacity;
+    }
 
-	public String getPlayers_4() {
-		return Players_4;
-	}
+    public void setCapacity(int capacity)
+    {
+        Capacity = capacity;
+    }
 
-	public void setPlayers_4(String players_4) {
-		Players_4 = players_4;
-	}
+    public String getPlayers_1()
+    {
+        return Players_1;
+    }
 
-	public String getPlayers_5() {
-		return Players_5;
-	}
+    public void setPlayers_1(String players_1)
+    {
+        Players_1 = players_1;
+    }
 
-	public void setPlayers_5(String players_5) {
-		Players_5 = players_5;
-	}
+    public String getPlayers_2()
+    {
+        return Players_2;
+    }
 
-	public String getPlayers_6() {
-		return Players_6;
-	}
+    public void setPlayers_2(String players_2)
+    {
+        Players_2 = players_2;
+    }
 
-	public void setPlayers_6(String players_6) {
-		Players_6 = players_6;
-	}
+    public String getPlayers_3()
+    {
+        return Players_3;
+    }
+
+    public void setPlayers_3(String players_3)
+    {
+        Players_3 = players_3;
+    }
+
+    public String getPlayers_4()
+    {
+        return Players_4;
+    }
+
+    public void setPlayers_4(String players_4)
+    {
+        Players_4 = players_4;
+    }
+
+    public String getPlayers_5()
+    {
+        return Players_5;
+    }
+
+    public void setPlayers_5(String players_5)
+    {
+        Players_5 = players_5;
+    }
+
+    public String getPlayers_6()
+    {
+        return Players_6;
+    }
+
+    public void setPlayers_6(String players_6)
+    {
+        Players_6 = players_6;
+    }
 }
-

@@ -26,8 +26,8 @@
     
     <fss:oauth>
         <fss:oauthInfo endpoint="http://login.salesforce.com"
-                       oauth-key="3MVG9A2kN3Bn17huEHwOZqYKzEC9gX3Vx7ITfvgKIPDnsOId_sfsUR92Mzr0EjweS_sWPesBV518T54iYtl8q"
-                       oauth-secret="808627943767271720"/>
+                       oauth-key="3MVG9A2kN3Bn17huEHwOZqYKzEEo_912MEuTuqLaezidI2aOate7QoXtdk8nwQzWCevSos0T4UBk59gYunfiX"
+                       oauth-secret="8853975291375875407"/>
     </fss:oauth>
     
     <security:http use-expressions="true">

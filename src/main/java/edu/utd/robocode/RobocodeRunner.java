@@ -44,19 +44,28 @@ public class RobocodeRunner
         // java.io.File("C:/Robocode")); // Run from C:/Robocode
         RobocodeEngine engine = new RobocodeEngine(); // Run from current
                                                       // working directory
+        
 
         // Add battle listener to our RobocodeEngine
         engine.addBattleListener(battleListener);
 
         // Show the battles
-        engine.setVisible(false);
+        engine.setVisible(true);
 
         // Setup the battle specification
 
         int numberOfRounds = 5;
         BattlefieldSpecification battlefield = new BattlefieldSpecification(
                 800, 600); // 800x600
+        
+        System.out.println(RobocodeEngine.getRobotsDir());
+        
         RobotSpecification[] selectedRobots = engine.getLocalRepository(StringUtils.join(robots, ','));
+//        RobotSpecification[] selectedRobots = engine.getLocalRepository();
+        for (RobotSpecification robot : selectedRobots)
+        {
+            System.out.print(robot.getName() + ", ");
+        }
         // RobotSpecification[] selectedRobots =
         // engine.getLocalRepository("tested.robots.BattleLost,tested.robots.EnvAttacks");
 
