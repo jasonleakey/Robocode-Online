@@ -50,7 +50,7 @@ public class RobocodeRunner
         engine.addBattleListener(battleListener);
 
         // Show the battles
-        engine.setVisible(true);
+        engine.setVisible(false);
 
         // Setup the battle specification
 
