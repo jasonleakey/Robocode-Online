@@ -3,6 +3,7 @@ package edu.utd.robocode;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +14,9 @@ import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
 import net.sf.robocode.io.Logger;
+
+import org.apache.commons.io.FileUtils;
+
 import robocode.control.RobocodeEngine;
 import edu.utd.model.Robot;
 import edu.utd.service.RobotService;
@@ -23,6 +27,8 @@ public class RobotApi
     public static boolean compileRobot(String source)
     {
         File f = RobocodeEngine.getRobotsDir();
+        Logger.logMessage("Robot Dir is " + f.toString());
+
         Pattern p = Pattern.compile("(?<=package ).*(?=;)");
         Matcher m = p.matcher(source);
         String packageName = new String();
@@ -36,6 +42,14 @@ public class RobotApi
         }
         // create robot dir.
         new File(f.getAbsolutePath() + File.separator + packageName).mkdirs();
+        // List all the files.
+        Logger.logMessage(System.getProperty("user.dir") + "====>");
+        List<File> files = (List<File>) FileUtils.listFiles(new File(
+                System.getProperty("user.dir")), null , true);
+        for (File file : files)
+        {
+            Logger.logMessage("file:" + file);
+        }
 
         p = Pattern.compile("(?<=public class )\\w*");
         m = p.matcher(source);
@@ -45,15 +59,22 @@ public class RobotApi
             robotClassName = m.group();
         }
 
-        // create robot source file.
-        FileUtils.write_file(f.getAbsolutePath() + File.separator + packageName
-                + File.separator + robotClassName + ".java", source);
-
-        String robotDir = f.getAbsolutePath() + File.separator + packageName;
-        String robotFile = f.getAbsolutePath() + File.separator + packageName
-                + File.separator + robotClassName + ".java";
         try
         {
+            // create robot source file.
+            FileUtils.writeStringToFile(new File(f.getAbsolutePath()
+                    + File.separator + packageName + File.separator
+                    + robotClassName + ".java"), source);
+
+            String robotDir = f.getAbsolutePath() + File.separator
+                    + packageName;
+            Logger.logMessage("robotDir: " + robotDir);
+
+            String robotFile = f.getAbsolutePath() + File.separator
+                    + packageName + File.separator + robotClassName + ".java";
+            Logger.logMessage("robotFile: " + robotFile);
+            
+            // compile the robot
             JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
             DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
             StandardJavaFileManager fileManager = compiler
