@@ -42,14 +42,6 @@ public class RobotApi
         }
         // create robot dir.
         new File(f.getAbsolutePath() + File.separator + packageName).mkdirs();
-        // List all the files.
-        Logger.logMessage(System.getProperty("user.dir") + "====>");
-        List<File> files = (List<File>) FileUtils.listFiles(new File(
-                System.getProperty("user.dir")), null , true);
-        for (File file : files)
-        {
-            Logger.logMessage("file:" + file);
-        }
 
         p = Pattern.compile("(?<=public class )\\w*");
         m = p.matcher(source);
@@ -73,7 +65,16 @@ public class RobotApi
             String robotFile = f.getAbsolutePath() + File.separator
                     + packageName + File.separator + robotClassName + ".java";
             Logger.logMessage("robotFile: " + robotFile);
-            
+
+            // List all the files.
+            Logger.logMessage(System.getProperty("user.dir") + "====>");
+            List<File> files = (List<File>) FileUtils.listFiles(
+                    new File(System.getProperty("user.dir")), null, true);
+            for (File file : files)
+            {
+                Logger.logMessage("file:" + file);
+            }
+
             // compile the robot
             JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
             DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
