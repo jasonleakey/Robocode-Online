@@ -1,6 +1,7 @@
 /target
 /.settings
 /tomcat.*
+/robots
 /.idea
 /*.iml
 oauth
