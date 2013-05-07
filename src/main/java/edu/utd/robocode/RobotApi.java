@@ -98,7 +98,7 @@ public class RobotApi
             optionList.addAll(Arrays.asList("-classpath",
                     System.getProperty("robocode.class.path")));
             JavaCompiler.CompilationTask task = compiler.getTask(null,
-                    fileManager, diagnostics, null, null, compilationUnits);
+                    fileManager, diagnostics, optionList, null, compilationUnits);
             boolean success = task.call();
             for (Diagnostic diagnostic : diagnostics.getDiagnostics())
             {
