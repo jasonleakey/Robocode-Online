@@ -44,7 +44,6 @@ public class RobocodeRunner
         // java.io.File("C:/Robocode")); // Run from C:/Robocode
         RobocodeEngine engine = new RobocodeEngine(); // Run from current
                                                       // working directory
-        
 
         // Add battle listener to our RobocodeEngine
         engine.addBattleListener(battleListener);
@@ -57,11 +56,12 @@ public class RobocodeRunner
         int numberOfRounds = 5;
         BattlefieldSpecification battlefield = new BattlefieldSpecification(
                 800, 600); // 800x600
-        
+
         Logger.logMessage(RobocodeEngine.getRobotsDir().toString());
-        
-        RobotSpecification[] selectedRobots = engine.getLocalRepository(StringUtils.join(robots, ','));
-//        RobotSpecification[] selectedRobots = engine.getLocalRepository();
+
+        RobotSpecification[] selectedRobots = engine
+                .getLocalRepository(StringUtils.join(robots, ','));
+        // RobotSpecification[] selectedRobots = engine.getLocalRepository();
         for (RobotSpecification robot : selectedRobots)
         {
             System.out.print(robot.getName() + ", ");
@@ -75,52 +75,4 @@ public class RobocodeRunner
         // Run our specified battle and let it run till it's over
         engine.runBattle(battleSpec, true/* wait till the battle is over */);
     }
-
-    /**
-     * BattleListener for handling the battle event we are interested in.
-     */
-    static class BattleObserver extends BattleAdaptor
-    {
-
-        public void onBattleStarted(BattleStartedEvent e)
-        {
-            Logger.logMessage("-- Battle was started --");
-        }
-
-        public void onBattleFinished(BattleFinishedEvent e)
-        {
-            if (e.isAborted())
-            {
-                Logger.logMessage("-- Battle was aborted --");
-            }
-            else
-            {
-                Logger.logMessage("-- Battle was finished succesfully --");
-            }
-        }
-
-        public void onBattleCompleted(BattleCompletedEvent e)
-        {
-            Logger.logMessage("-- Battle has completed --");
-
-            // Print out the sorted results with the robot names
-            Logger.logMessage("\n-- Battle results --");
-            for (BattleResults result : e.getSortedResults())
-            {
-                Logger.logMessage("  " + result.getTeamLeaderName() + ": "
-                        + result.getScore());
-            }
-        }
-
-        public void onBattleMessage(BattleMessageEvent e)
-        {
-            Logger.logMessage("Msg> " + e.getMessage());
-        }
-
-        public void onBattleError(BattleErrorEvent e)
-        {
-            Logger.logMessage("Err> " + e.getError());
-        }
-    }
-
 }
