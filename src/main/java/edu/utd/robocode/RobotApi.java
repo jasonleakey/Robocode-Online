@@ -30,8 +30,8 @@ public class RobotApi
     {
         File f = RobocodeEngine.getRobotsDir();
         Logger.getAnonymousLogger().info("Robot Dir is " + f.toString());
-        // Logger.getAnonymousLogger().info("java.class.path:" +
-        // System.getProperty("java.class.path"));
+        Logger.getAnonymousLogger().info(
+                "java.class.path:" + System.getProperty("java.class.path"));
 
         Pattern p = Pattern.compile("(?<=package ).*(?=;)");
         Matcher m = p.matcher(source);
