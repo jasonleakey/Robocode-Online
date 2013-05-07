@@ -2,6 +2,7 @@ package edu.utd.robocode;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -29,6 +30,8 @@ public class RobotApi
     {
         File f = RobocodeEngine.getRobotsDir();
         Logger.getAnonymousLogger().info("Robot Dir is " + f.toString());
+        // Logger.getAnonymousLogger().info("java.class.path:" +
+        // System.getProperty("java.class.path"));
 
         Pattern p = Pattern.compile("(?<=package ).*(?=;)");
         Matcher m = p.matcher(source);
@@ -75,7 +78,7 @@ public class RobotApi
                     new File(System.getProperty("user.dir")), null, true);
             for (File file : files)
             {
-                Logger.getAnonymousLogger().info("file:" + file);
+                // Logger.getAnonymousLogger().info("file:" + file);
             }
 
             // compile the robot
@@ -85,6 +88,10 @@ public class RobotApi
                     .getStandardFileManager(diagnostics, null, null);
             Iterable<? extends JavaFileObject> compilationUnits = fileManager
                     .getJavaFileObjectsFromStrings(Arrays.asList(robotFile));
+            List<String> optionList = new ArrayList<String>();
+            // set compiler's classpath to be same as the runtime's
+            optionList.addAll(Arrays.asList("-classpath",
+                    System.getProperty("java.class.path")));
             JavaCompiler.CompilationTask task = compiler.getTask(null,
                     fileManager, diagnostics, null, null, compilationUnits);
             boolean success = task.call();
