@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,8 +13,6 @@ import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
-
-import net.sf.robocode.io.Logger;
 
 import org.apache.commons.io.FileUtils;
 
@@ -27,7 +26,7 @@ public class RobotApi
     public static boolean compileRobot(String source)
     {
         File f = RobocodeEngine.getRobotsDir();
-        Logger.logMessage("Robot Dir is " + f.toString());
+        Logger.getAnonymousLogger().info("Robot Dir is " + f.toString());
 
         Pattern p = Pattern.compile("(?<=package ).*(?=;)");
         Matcher m = p.matcher(source);
@@ -38,7 +37,7 @@ public class RobotApi
         }
         else
         {
-            Logger.logError("Could not create folder for Robot! Check you Robot code.");
+            Logger.getAnonymousLogger().severe("Could not create folder for Robot! Check you Robot code.");
         }
         // create robot dir.
         new File(f.getAbsolutePath() + File.separator + packageName).mkdirs();
@@ -60,19 +59,19 @@ public class RobotApi
 
             String robotDir = f.getAbsolutePath() + File.separator
                     + packageName;
-            Logger.logMessage("robotDir: " + robotDir);
+            Logger.getAnonymousLogger().info("robotDir: " + robotDir);
 
             String robotFile = f.getAbsolutePath() + File.separator
                     + packageName + File.separator + robotClassName + ".java";
-            Logger.logMessage("robotFile: " + robotFile);
+            Logger.getAnonymousLogger().info("robotFile: " + robotFile);
 
             // List all the files.
-            Logger.logMessage(System.getProperty("user.dir") + "====>");
+            Logger.getAnonymousLogger().info(System.getProperty("user.dir") + "====>");
             List<File> files = (List<File>) FileUtils.listFiles(
                     new File(System.getProperty("user.dir")), null, true);
             for (File file : files)
             {
-                Logger.logMessage("file:" + file);
+                Logger.getAnonymousLogger().info("file:" + file);
             }
 
             // compile the robot

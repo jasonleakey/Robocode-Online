@@ -1,6 +1,7 @@
 package edu.utd.robocode;
 
-import net.sf.robocode.io.Logger;
+import java.util.logging.Logger;
+
 import robocode.BattleResults;
 import robocode.control.events.BattleAdaptor;
 import robocode.control.events.BattleCompletedEvent;
@@ -16,41 +17,41 @@ public class BattleObserver extends BattleAdaptor
 {
     public void onBattleStarted(BattleStartedEvent e)
     {
-        Logger.logMessage("-- Battle was started --");
+        Logger.getAnonymousLogger().info("-- Battle was started --");
     }
 
     public void onBattleFinished(BattleFinishedEvent e)
     {
         if (e.isAborted())
         {
-            Logger.logMessage("-- Battle was aborted --");
+            Logger.getAnonymousLogger().info("-- Battle was aborted --");
         }
         else
         {
-            Logger.logMessage("-- Battle was finished succesfully --");
+            Logger.getAnonymousLogger().info("-- Battle was finished succesfully --");
         }
     }
 
     public void onBattleCompleted(BattleCompletedEvent e)
     {
-        Logger.logMessage("-- Battle has completed --");
+        Logger.getAnonymousLogger().info("-- Battle has completed --");
 
         // Print out the sorted results with the robot names
-        Logger.logMessage("\n-- Battle results --");
+        Logger.getAnonymousLogger().info("\n-- Battle results --");
         for (BattleResults result : e.getSortedResults())
         {
-            Logger.logMessage("  " + result.getTeamLeaderName() + ": "
+            Logger.getAnonymousLogger().info("  " + result.getTeamLeaderName() + ": "
                     + result.getScore());
         }
     }
 
     public void onBattleMessage(BattleMessageEvent e)
     {
-        Logger.logMessage("Msg> " + e.getMessage());
+        Logger.getAnonymousLogger().info("Msg> " + e.getMessage());
     }
 
     public void onBattleError(BattleErrorEvent e)
     {
-        Logger.logMessage("Err> " + e.getError());
+        Logger.getAnonymousLogger().info("Err> " + e.getError());
     }
 }
