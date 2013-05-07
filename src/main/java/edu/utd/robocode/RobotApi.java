@@ -30,8 +30,13 @@ public class RobotApi
     {
         File f = RobocodeEngine.getRobotsDir();
         Logger.getAnonymousLogger().info("Robot Dir is " + f.toString());
+        // Add robocode class path in order to compile the Robot. 
+        if (null == System.getProperty("robocode.class.path"))
+        {
+            new RobocodeEngine();
+        }
         Logger.getAnonymousLogger().info(
-                "java.class.path:" + System.getProperty("java.class.path"));
+                "robocode.class.path:" + System.getProperty("robocode.class.path"));
 
         Pattern p = Pattern.compile("(?<=package ).*(?=;)");
         Matcher m = p.matcher(source);
@@ -91,7 +96,7 @@ public class RobotApi
             List<String> optionList = new ArrayList<String>();
             // set compiler's classpath to be same as the runtime's
             optionList.addAll(Arrays.asList("-classpath",
-                    System.getProperty("java.class.path")));
+                    System.getProperty("robocode.class.path")));
             JavaCompiler.CompilationTask task = compiler.getTask(null,
                     fileManager, diagnostics, null, null, compilationUnits);
             boolean success = task.call();
