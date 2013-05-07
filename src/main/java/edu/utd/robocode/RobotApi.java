@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaCompiler;
 import javax.tools.JavaFileObject;
@@ -37,7 +39,8 @@ public class RobotApi
         }
         else
         {
-            Logger.getAnonymousLogger().severe("Could not create folder for Robot! Check you Robot code.");
+            Logger.getAnonymousLogger().severe(
+                    "Could not create folder for Robot! Check you Robot code.");
         }
         // create robot dir.
         new File(f.getAbsolutePath() + File.separator + packageName).mkdirs();
@@ -66,7 +69,8 @@ public class RobotApi
             Logger.getAnonymousLogger().info("robotFile: " + robotFile);
 
             // List all the files.
-            Logger.getAnonymousLogger().info(System.getProperty("user.dir") + "====>");
+            Logger.getAnonymousLogger().info(
+                    System.getProperty("user.dir") + "====>");
             List<File> files = (List<File>) FileUtils.listFiles(
                     new File(System.getProperty("user.dir")), null, true);
             for (File file : files)
@@ -84,7 +88,19 @@ public class RobotApi
             JavaCompiler.CompilationTask task = compiler.getTask(null,
                     fileManager, diagnostics, null, null, compilationUnits);
             boolean success = task.call();
+            for (Diagnostic diagnostic : diagnostics.getDiagnostics())
+            {
+                Logger.getAnonymousLogger()
+                        .severe(String
+                                .format("Error on line %d in %s, kind=%s, message=%s%n",
+                                        diagnostic.getLineNumber(),
+                                        ((JavaFileObject) diagnostic
+                                                .getSource()).toUri(),
+                                        diagnostic.getKind(), diagnostic
+                                                .getMessage(Locale.ENGLISH)));
+            }
             fileManager.close();
+
             System.out.println("Success: " + success);
         }
         catch (IOException e)
@@ -100,5 +116,19 @@ public class RobotApi
         RobotService robotService = new RobotServiceImpl();
         Robot robot = robotService.getRobot(robotName);
         return compileRobot(robot.getSource_Code());
+    }
+
+    public static void main(String[] args)
+    {
+        try
+        {
+            RobotApi.compileRobot(FileUtils
+                    .readFileToString(new File(
+                            "/home/jasonleakey/Robocode/Robocode-SaaS/robots/edu/utd/robot/Yang3.java")));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
