@@ -29,13 +29,13 @@ public class SessionServiceImpl implements SessionService
 
     public String addSession(Session session)
     {
-        return getForceApi().createSObject("Session", session);
+        return getForceApi().createSObject("robocode__Session__c", session);
     }
     
     public List<Session> listSession()
     {
         QueryResult<Session> res = getForceApi()
-                .query("SELECT robocode__RoomName__c, robocode__Player_Number__c, robocode__Capacity__c, robocode__Status__c, robocode__Player_5__c, robocode__Player_6__c, robocode__Player_3__c, robocode__Player_4__c, robocode__Player_1__c,  FROM robocode__Session__c",
+                .query("SELECT Id, Name, robocode__Num_Of_Players__c, robocode__Capacity__c, robocode__Status__c, robocode__Player_5__c, robocode__Player_6__c, robocode__Player_3__c, robocode__Player_4__c, robocode__Player_1__c FROM robocode__Session__c",
                         Session.class);
         return res.getRecords();
 
@@ -43,6 +43,6 @@ public class SessionServiceImpl implements SessionService
 
     public void removeSession(String Session)
     {
-        getForceApi().deleteSObject("Session", Session);
+        getForceApi().deleteSObject("robocode__Session__c", Session);
     }
 }

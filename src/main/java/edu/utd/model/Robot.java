@@ -3,39 +3,58 @@ package edu.utd.model;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown=true)
-public class Robot {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Robot
+{
+    @JsonProperty(value = "Id")
+    private String id;
+    
+    @JsonProperty(value = "Name")
+    private String name;
 
-	@JsonProperty(value="Robot_ID")
-	private String Robot_ID;
-	
-	@JsonProperty(value="robocode__Name__c")
-	private String Name;
+    @JsonProperty(value = "robocode__Score__c")
+    private long score;
 
-	@JsonProperty(value="robocode__Source_Code__c")
-	private String Source_Code;
-	
-	public String getName() {
-		return Name;
-	}
+    @JsonProperty(value = "robocode__Source_Code__c")
+    private String source_Code;
 
-	public void setName(String name) {
-		Name = name;
-	}
+    public String getName()
+    {
+        return name;
+    }
 
-	public String getSource_Code() {
-		return Source_Code;
-	}
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
-	public void setSource_Code(String source_Code) {
-		Source_Code = source_Code;
-	}
+    public String getSource_Code()
+    {
+        return source_Code;
+    }
 
-	public String getRobot_ID() {
-		return Robot_ID;
-	}
+    public void setSource_Code(String source_Code)
+    {
+        this.source_Code = source_Code;
+    }
 
-	public void setRobot_ID(String robot_ID) {
-		Robot_ID = robot_ID;
-	}
+    public long getScore()
+    {
+        return score;
+    }
+
+    public void setScore(long score)
+    {
+        this.score = score;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
+    }
 }

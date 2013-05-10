@@ -16,6 +16,8 @@ import robocode.control.BattleSpecification;
 import robocode.control.BattlefieldSpecification;
 import robocode.control.RobocodeEngine;
 import robocode.control.RobotSpecification;
+import robocode.control.events.BattleAdaptor;
+import robocode.control.events.IBattleListener;
 
 /**
  * Sample application that runs two sample robots in Robocode.
@@ -24,16 +26,15 @@ import robocode.control.RobotSpecification;
  */
 public class RobocodeRunner
 {
-    public static void main(String[] args)
+    private BattleAdaptor adapter;
+    
+    public RobocodeRunner(BattleAdaptor adapter)
     {
-        new RobocodeRunner(new String[]{"edu.utd.robot.Jason2*", "edu.utd.robot.Yang3*"});
+        this.adapter = adapter;
     }
     
-    public RobocodeRunner(String[] robots)
+    public void run(String[] robots)
     {
-        // Battle listener used for receiving battle events
-        BattleObserver battleListener = new BattleObserver();
-
         // Create the RobocodeEngine
         // IRobocodeEngine engine = new RobocodeEngine(new
         // java.io.File("C:/Robocode")); // Run from C:/Robocode
@@ -41,7 +42,7 @@ public class RobocodeRunner
                                                       // working directory
 
         // Add battle listener to our RobocodeEngine
-        engine.addBattleListener(battleListener);
+        engine.addBattleListener(adapter);
 
         // Show the battles
         engine.setVisible(false);
@@ -69,5 +70,11 @@ public class RobocodeRunner
 
         // Run our specified battle and let it run till it's over
         engine.runBattle(battleSpec, true/* wait till the battle is over */);
+    }
+    
+    public static void main(String[] args)
+    {
+//        RobocodeRunner runner = new RobocodeRunner();
+//        new String[]{"edu.utd.robot.Jason2*", "edu.utd.robot.Yang3*"});
     }
 }

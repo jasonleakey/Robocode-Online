@@ -2,7 +2,10 @@ package edu.utd.robocode;
 
 import java.util.logging.Logger;
 
+import edu.utd.controller.RobotController;
+
 import robocode.BattleResults;
+import robocode.control.RobotResults;
 import robocode.control.events.BattleAdaptor;
 import robocode.control.events.BattleCompletedEvent;
 import robocode.control.events.BattleErrorEvent;
@@ -28,7 +31,8 @@ public class BattleObserver extends BattleAdaptor
         }
         else
         {
-            Logger.getAnonymousLogger().info("-- Battle was finished succesfully --");
+            Logger.getAnonymousLogger().info(
+                    "-- Battle was finished succesfully --");
         }
     }
 
@@ -40,9 +44,11 @@ public class BattleObserver extends BattleAdaptor
         Logger.getAnonymousLogger().info("\n-- Battle results --");
         for (BattleResults result : e.getSortedResults())
         {
-            Logger.getAnonymousLogger().info("  " + result.getTeamLeaderName() + ": "
-                    + result.getScore());
+            Logger.getAnonymousLogger().info(
+                    "  " + result.getTeamLeaderName() + ": "
+                            + result.getScore());
         }
+        RobotController.setGameResult(e.getSortedResults());
     }
 
     public void onBattleMessage(BattleMessageEvent e)

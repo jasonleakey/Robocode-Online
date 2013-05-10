@@ -6,133 +6,146 @@ import org.codehaus.jackson.annotate.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Session
 {
-    @JsonProperty(value = "robocode__RoomName__c")
-    private String RoomName;
+    @JsonProperty(value = "Id")
+    private String id;
+    
+    @JsonProperty(value = "Name")
+    private String roomName;
 
     @JsonProperty(value = "robocode__Status__c")
-    private String Status;
+    private String status;
 
-    @JsonProperty(value = "robocode__Player_Number__c")
-    private int Player_Number;
+    @JsonProperty(value = "robocode__Num_Of_Players__c")
+    private int player_Number;
 
     @JsonProperty(value = "robocode__Capacity__c")
-    private int Capacity;
+    private int capacity;
 
     @JsonProperty(value = "robocode__Player_1__c")
-    private String Players_1;
+    private String player_1;
 
     @JsonProperty(value = "robocode__Player_2__c")
-    private String Players_2;
+    private String player_2;
 
     @JsonProperty(value = "robocode__Player_3__c")
-    private String Players_3;
+    private String player_3;
 
     @JsonProperty(value = "robocode__Player_4__c")
-    private String Players_4;
+    private String player_4;
 
     @JsonProperty(value = "robocode__Player_5__c")
-    private String Players_5;
+    private String player_5;
 
     @JsonProperty(value = "robocode__Player_6__c")
-    private String Players_6;
+    private String player_6;
 
     public String getRoomName()
     {
-        return RoomName;
+        return roomName;
     }
 
     public void setRoomName(String roomName)
     {
-        RoomName = roomName;
+        this.roomName = roomName;
     }
 
     public String getStatus()
     {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status)
     {
-        Status = status;
+        this.status = status;
     }
 
     public int getPlayer_Number()
     {
-        return Player_Number;
+        return player_Number;
     }
 
     public void setPlayer_Number(int player_Number)
     {
-        Player_Number = player_Number;
+        this.player_Number = player_Number;
     }
 
     public int getCapacity()
     {
-        return Capacity;
+        return capacity;
     }
 
     public void setCapacity(int capacity)
     {
-        Capacity = capacity;
+        this.capacity = capacity;
     }
 
-    public String getPlayers_1()
+    public String getPlayer_1()
     {
-        return Players_1;
+        return player_1;
     }
 
-    public void setPlayers_1(String players_1)
+    public void setPlayer_1(String player_1)
     {
-        Players_1 = players_1;
+        this.player_1 = player_1;
     }
 
-    public String getPlayers_2()
+    public String getPlayer_2()
     {
-        return Players_2;
+        return player_2;
     }
 
-    public void setPlayers_2(String players_2)
+    public void setPlayer_2(String player_2)
     {
-        Players_2 = players_2;
+        this.player_2 = player_2;
     }
 
-    public String getPlayers_3()
+    public String getPlayer_3()
     {
-        return Players_3;
+        return player_3;
     }
 
-    public void setPlayers_3(String players_3)
+    public void setPlayer_3(String player_3)
     {
-        Players_3 = players_3;
+        this.player_3 = player_3;
     }
 
-    public String getPlayers_4()
+    public String getPlayer_4()
     {
-        return Players_4;
+        return player_4;
     }
 
-    public void setPlayers_4(String players_4)
+    public void setPlayer_4(String player_4)
     {
-        Players_4 = players_4;
+        this.player_4 = player_4;
     }
 
-    public String getPlayers_5()
+    public String getPlayer_5()
     {
-        return Players_5;
+        return player_5;
     }
 
-    public void setPlayers_5(String players_5)
+    public void setPlayer_5(String player_5)
     {
-        Players_5 = players_5;
+        this.player_5 = player_5;
     }
 
-    public String getPlayers_6()
+    public String getPlayer_6()
     {
-        return Players_6;
+        return player_6;
     }
 
-    public void setPlayers_6(String players_6)
+    public void setPlayer_6(String player_6)
     {
-        Players_6 = players_6;
+        this.player_6 = player_6;
+    }
+
+    public String getId()
+    {
+        return id;
+    }
+
+    public void setId(String id)
+    {
+        this.id = id;
     }
 }

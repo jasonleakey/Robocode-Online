@@ -79,13 +79,30 @@ li {
 					</c:forEach>
 				</ol>
 			</div>
-			
+
 			<div id="robotbuttons">
 				<div style="float: left">
 					<form action="join" method="get">
-						<input type="text" name="robot_name">
-						<input type="submit" class="btn btn-danger btn-mini"
-							value="Join" />
+						<table>
+							<tr>
+								<td>Selected Robot:</td>
+								<td><input type="text" name="robot_name"></td>
+							</tr>
+							<tr>
+								<td>Session Name:</td>
+								<td><input type="text" name="session_name"></td>
+							</tr>
+							<tr>
+								<td>Session Capacity:</td>
+								<td><input type="text" name="session_capacity" placeholder="Leave it blank if join only"></td>
+							</tr>
+							<tr>
+								<td />
+								<td><input type="submit" class="btn btn-danger btn-mini"
+									value="Join" /></td>
+							</tr>
+						</table>
+
 					</form>
 				</div>
 			</div>
