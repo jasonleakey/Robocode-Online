@@ -17,7 +17,6 @@ import robocode.control.BattlefieldSpecification;
 import robocode.control.RobocodeEngine;
 import robocode.control.RobotSpecification;
 import robocode.control.events.BattleAdaptor;
-import robocode.control.events.IBattleListener;
 
 /**
  * Sample application that runs two sample robots in Robocode.
