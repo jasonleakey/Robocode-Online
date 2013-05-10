@@ -78,7 +78,7 @@ public class SessionManager
         if (isSessionExisted(sessionName))
         {
             RoboSession session = sessions.get(sessionName);
-            if (session.isEnded())
+            if (!session.isEnded())
             {
                 // not ended session, should not be destroyed.
                 return false;
