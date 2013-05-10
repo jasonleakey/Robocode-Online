@@ -1,6 +1,8 @@
 package edu.utd.robocode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SessionManager
 {
@@ -20,6 +22,11 @@ public class SessionManager
         session.setSessionName(name);
         sessions.put(name, session);
         return true;
+    }
+    
+    public static List<RoboSession> listSessions()
+    {
+        return new ArrayList<RoboSession>(sessions.values());
     }
 
     public static RoboSession getSession(String sessionName)

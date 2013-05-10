@@ -18,9 +18,12 @@ public class RoboSession
 
     private String sessionStatus = "";
 
+    private Integer players = 0;
+
     public void addRobot(String robotName)
     {
         robotList.add(robotName + "*");
+        players = robotList.size();
     }
 
     public String getRobot(int idx)
@@ -37,6 +40,7 @@ public class RoboSession
             if (robot_name.equals(robotName))
             {
                 robotList.remove(robot_name);
+                players = robotList.size();
                 return robot_name;
             }
         }
@@ -51,6 +55,7 @@ public class RoboSession
     public void setRobotList(List<String> robotList)
     {
         this.robotList = robotList;
+        this.players = this.robotList.size();
     }
 
     public List<BattleResults> getResults()
@@ -74,7 +79,7 @@ public class RoboSession
         }
         return null;
     }
-    
+
     public void delResult(BattleResults result)
     {
         results.remove(result);
@@ -109,9 +114,14 @@ public class RoboSession
     {
         this.sessionStatus = sessionStatus;
     }
-    
+
     public boolean isEnded()
     {
         return results.isEmpty() && "Completed".equals(sessionStatus);
+    }
+
+    public Integer getPlayers()
+    {
+        return players;
     }
 }

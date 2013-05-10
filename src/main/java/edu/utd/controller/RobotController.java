@@ -47,6 +47,7 @@ public class RobotController
     {
         map.put("robot", new Robot());
         map.put("robotList", robotService.listRobot());
+        map.put("sessionList", SessionManager.listSessions());
 
         return "robot";
     }

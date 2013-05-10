@@ -21,6 +21,13 @@ div#robotlist {
 	float: left;
 }
 
+div#gamelist {
+	background-color: #44bbbb;
+	height: 200px;
+	width: 300px;
+	float: left;
+}
+
 div#content {
 	background-color: #EEEEEE;
 	height: 200px;
@@ -59,7 +66,7 @@ li {
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Robocode Online</title>
 </head>
 <body>
 	<p>
@@ -70,8 +77,8 @@ li {
 		%>
 	</p>
 	<div class="container">
-		<fieldset>
-			<legend>Your Robot List</legend>
+		<fieldset style="float: left">
+			<legend>You Robot List</legend>
 			<div id="robotlist" style="overflow: scroll; border: 1px solid;">
 				<ol>
 					<c:forEach items="${robotList}" var="robot">
@@ -79,34 +86,46 @@ li {
 					</c:forEach>
 				</ol>
 			</div>
+		</fieldset>
 
-			<div id="robotbuttons">
-				<div style="float: left">
-					<form action="join" method="get">
-						<table>
-							<tr>
-								<td>Selected Robot:</td>
-								<td><input type="text" name="robot_name"></td>
-							</tr>
-							<tr>
-								<td>Session Name:</td>
-								<td><input type="text" name="session_name"></td>
-							</tr>
-							<tr>
-								<td>Session Capacity:</td>
-								<td><input type="text" name="session_capacity" placeholder="Leave it blank if join only"></td>
-							</tr>
-							<tr>
-								<td />
-								<td><input type="submit" class="btn btn-danger btn-mini"
-									value="Join" /></td>
-							</tr>
-						</table>
-
-					</form>
-				</div>
+		<fieldset style="float: left">
+			<legend>Session List</legend>
+			<div id="gamelist" style="overflow: scroll; border: 1px solid">
+				<ol>
+					<c:forEach items="${sessionList}" var="session">
+						<li>${session.sessionName} | ${session.players}/${session.sessionCapacity}</li>
+					</c:forEach>
+				</ol>
 			</div>
 		</fieldset>
+		
+		<div id="robotbuttons">
+			<div style="float: left">
+				<form action="join" method="get">
+					<table>
+						<tr>
+							<td>Selected Robot:</td>
+							<td><input type="text" name="robot_name"></td>
+						</tr>
+						<tr>
+							<td>Session Name:</td>
+							<td><input type="text" name="session_name"></td>
+						</tr>
+						<tr>
+							<td>Session Capacity:</td>
+							<td><input type="text" name="session_capacity"
+								placeholder="Leave it blank if join only"></td>
+						</tr>
+						<tr>
+							<td />
+							<td><input type="submit" class="btn btn-danger btn-mini"
+								value="Join" /></td>
+						</tr>
+					</table>
+
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
